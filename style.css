@@ -1,0 +1,56 @@
+@import url('https://fonts.cdnfonts.com/css/verdana');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Verdana', sans-serif;
+}
+
+div {
+    
+    border: 1px solid black;
+}
+
+#container {
+    width: 1000px;
+    height: 800px;
+    margin: 0px auto;
+}
+
+li {
+    list-style: none;
+    padding: 10px 5px;
+}
+
+#sidebar {
+    width: 35%;
+}
+
+#personal-information {
+    display: flex;
+    justify-content: center;
+    margin: 0px auto;
+    padding: 10px 5px;
+    gap: 5px;
+}
+
+#userinfo {
+    flex-direction: row;
+    align-self: center;
+    margin: 0px auto;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+p#mail {
+    font-size: 12px;
+    color: gray;
+}
