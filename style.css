@@ -13,8 +13,8 @@ div {
 
 #container {
     width: 1000px;
-    height: 800px;
-    margin: 0px auto;
+    height: 700px;
+    margin: auto auto;
 }
 
 li {
@@ -23,7 +23,9 @@ li {
 }
 
 #sidebar {
+    position: relative;
     width: 35%;
+    height: 100%;
 }
 
 #personal-information {
@@ -53,4 +55,11 @@ h3 {
 p#mail {
     font-size: 12px;
     color: gray;
+}
+
+#newlist {
+    position: absolute;
+    width: 100%;
+    display: inline-block;
+    bottom: 0;
 }
