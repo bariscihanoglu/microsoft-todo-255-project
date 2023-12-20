@@ -12,6 +12,8 @@ div {
 }
 
 #container {
+    display: flex;
+
     width: 1000px;
     height: 700px;
     margin: auto auto;
@@ -62,4 +64,72 @@ p#mail {
     width: 100%;
     display: inline-block;
     bottom: 0;
+}
+
+#content {
+    width: 65%;
+}
+
+#pmembers-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: #E6E6FA;
+    height: 100%;
+}
+
+#pmembers-header{
+    color: #f9f;
+    font-weight: bold;
+    font-size: 30px;
+
+    text-align: center;
+    margin: 45px auto;
+
+    /* height: 20%; */
+}
+
+#pmembers-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 60px;
+
+    height: 80%;
+}
+
+#member{
+    background-color: 	#F0F8FF;
+    border-radius: 30px;
+
+    display: flex;
+    margin: 0px auto;
+    padding: 10px 5px;
+    gap: 5px;
+    text-align: center;
+
+    width: 60%;
+
+    /* border: 1px solid black; */
+}
+
+#memberimg {
+    padding: 10px;
+}
+
+#memberinfo {
+    color: #ADD8E6;
+    align-self: center;
+    margin: 0px auto;
+
+    font-size: smaller;
+}
+
+#memberinfo h3 {
+    color:#f9f;
+    padding-bottom: 10px;
+    font-size: 17px;
 }
