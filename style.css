@@ -73,9 +73,9 @@ p#mail {
 
 #pmembers-page {
 
-    /* display: none; */        /*bunu comment ten çıkarıp display:flexi comment e al eğer bu sayfanın yerine task sayfasını koymak istiyosan*/
+    display: none;
 
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: space-between;
 
@@ -140,7 +140,7 @@ p#mail {
 
 #task-page {
 
-    display: none;      /*bunu comment e al task sayfasını görmek istiyosan*/
+    /* display: none;*/
 
     background-color: lightblue;
     height: 100%;
@@ -172,4 +172,21 @@ p#mail {
 
 #taskbtn {
     position: absolute;
+}
+
+#tasks {
+    height: 65%;
+}
+
+#task li {
+    border: 1px solid black;
+    border-radius: 7px;
+    
+    background-color: #E6E6FA;
+
+    margin: 15px;
+
+    padding: 25px;
+
+    color: #999;
 }
