@@ -8,7 +8,7 @@
 
 div {
     
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 #container {
@@ -24,10 +24,35 @@ li {
     padding: 10px 5px;
 }
 
+#project-members {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
 #sidebar {
-    position: relative;
-    width: 35%;
-    height: 100%;
+    border: 1px solid black;
+    /* padding: 8px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#sidebar li:hover {
+    background-color: rgb(224, 224, 224);
+    cursor: pointer;
+}
+
+#sidebar .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+}
+
+#sidebar li i {
+    color: rgb(125, 125, 251);
 }
 
 #personal-information {
@@ -59,11 +84,35 @@ p#mail {
     color: gray;
 }
 
-#newlist {
-    position: absolute;
-    width: 100%;
-    display: inline-block;
-    bottom: 0;
+/*LEFT SECTION FOOTER*/
+
+#sidebar footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 10px;
+    border-top: 2px solid grey;
+}
+#sidebar footer:hover {
+    background-color: rgb(228, 228, 228);
+    cursor: pointer;
+}
+
+#sidebar footer div:first-of-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 35px;
+    font-weight: bold;
+    color: grey;
+}
+
+#sidebar footer div:last-of-type {
+    
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /*content part = project members*/
@@ -73,7 +122,7 @@ p#mail {
 
 #pmembers-page {
 
-    /* display: none; */        /*bunu comment ten çıkarıp display:flexi comment e al eğer bu sayfanın yerine task sayfasını koymak istiyosan*/
+    /* display: none;        /*bunu comment ten çıkarıp display:flexi comment e al eğer bu sayfanın yerine task sayfasını koymak istiyosan*/
 
     display: flex;
     flex-direction: column;
@@ -172,4 +221,25 @@ p#mail {
 
 #taskbtn {
     position: absolute;
+}
+
+
+
+
+/*USED BY JQUERY*/
+.selected-menu {
+    border-left: 5px solid blue;
+}
+.completed {
+    text-decoration:line-through;
+}
+.hidden {
+    display: none;
+}
+.display {
+    display:block;
+}
+
+.secret {
+    visibility: hidden;
 }
