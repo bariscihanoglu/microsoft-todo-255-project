@@ -124,7 +124,7 @@ p#mail {
 
     /* display: none;        /*bunu comment ten çıkarıp display:flexi comment e al eğer bu sayfanın yerine task sayfasını koymak istiyosan*/
 
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
 
@@ -189,7 +189,7 @@ p#mail {
 
 #task-page {
 
-    /* display: none;*/
+    display: none;
 
     background-color: lightblue;
     height: 100%;
