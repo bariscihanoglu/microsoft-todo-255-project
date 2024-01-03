@@ -1,12 +1,14 @@
 //localLoader();
 var database = JSON.parse(localStorage.getItem("database"));
+
 if(database == null) {
     localLoader();
     database = JSON.parse(localStorage.getItem("database"));
 } 
+
 var userIndex = 0;
+
 $(function() {
-    
     renderUsers();
     renderProfile();
     renderingTodolists();
@@ -27,17 +29,13 @@ $(function() {
     addNewItemBTN();
 
     itemBTN();
-
-
-});
+})
 
 
 function renderUsers() {
     // making sure user profiles section is visible
     $("#members").hasClass("display") ? "" : $("#members").addClass("display");
-    $("#todolist")
     for(let user of database) {
-        console.log(user);
         $("#profiles").append(`
             <div class="member-profile">
                 <img src="${user.image}" alt="">
@@ -52,13 +50,13 @@ function renderUsers() {
 }
 
 function renderProfile() {
-    $("#top").html("").append(`
-    <img src="${database[userIndex].image}" alt="">
-    <div>
-        <p class="header-title">${database[userIndex].name}</p>
-        <p class="header-email">${database[userIndex].email}</p>
-    </div>
-`);
+    $("#top").html(`
+        <img src="${database[userIndex].image}" alt="">
+        <div>
+            <p class="header-title">${database[userIndex].name}</p>
+            <p class="header-email">${database[userIndex].email}</p>
+        </div>
+    `);
 }
 
 function renderingTodolists() {
@@ -86,7 +84,6 @@ function renderingTodolists() {
         $("#members").removeClass("hidden").addClass("display");
         $("#todolist").removeClass("display").addClass("hidden")
     }
-
 }
 
 function profileSelection() {
@@ -136,7 +133,6 @@ function todolistSelection() {
 function renderTheTodolist(todolist) {
     $("#todolist #items").html("");
 
-    console.log("Inside of " + todolist);
     if(todolist) {
         $("#todolist header div").text(todolist.title);
 
@@ -151,7 +147,6 @@ function renderTheTodolist(todolist) {
     }
 
 }
-
 
 function projectMembersButton () {
     $("#project-members").on("click", function(e) {
@@ -182,6 +177,7 @@ function modalCancelBTN () {
         $("#modal input").val("");
     }); 
 }
+
 function modalCreateBTN() {
     $("#create-btn").on("click", function(e) {
         e.stopPropagation();
@@ -201,22 +197,19 @@ function modalCreateBTN() {
             renderTheTodolist(getTodolist(todolistTitle));
     
             localStorage.setItem("database", JSON.stringify(database));
-    
+            
             $("#left-section article .category:last-of-type").addClass("selected-menu");
             $("#project-members").removeClass("selected-menu");
-    
+
             $("#modal").removeClass("display");
             $("#overlay").removeClass("active");
             $("#add-bar input").focus();
-
         }
-
     });
 }
 
 function modalInputEnterTrigger() {
     $("#modal input").on("keydown", function(e) {
-        console.log(e.key);
         if(e.key == "Enter") {
             e.stopPropagation();
 
@@ -241,12 +234,12 @@ function modalInputEnterTrigger() {
                 $("#modal").removeClass("display");
                 $("#overlay").removeClass("active");
                 $("#add-bar input").focus();
+                $("#project-members").removeClass("selected-menu");
             }
 
         }
     })
 }
-
 
 function todolistsDeleteBTN() {
     //Visibility of delete button
@@ -268,17 +261,16 @@ function todolistsDeleteBTN() {
         if(defaultTodolist) {
             $("#todolist header div").text(defaultTodolist.title);
             renderTheTodolist(defaultTodolist);
-            
-
             $("#left-section article .category:eq(0)").addClass("selected-menu");
+        }
+        else {
+            $("#project-members").addClass("selected-menu");
         }
 
         localStorage.setItem("database", JSON.stringify(database));
 
-
     })
 }
-
 
 function addNewItemBTN() {
     $("#add-bar input").on("keydown", function(e) {
@@ -293,11 +285,9 @@ function addNewItemBTN() {
     
                 $("#add-bar input").val("").focus();
                 localStorage.setItem("database", JSON.stringify(database));
-
                 
                 $(".selected-menu").find(".count").text(findNotCompletedItemCount(todolistName) ? findNotCompletedItemCount(todolistName) : "");
             }
-
         }
     })
 
@@ -312,11 +302,9 @@ function addNewItemBTN() {
 
             $("#add-bar input").val("").focus();
             localStorage.setItem("database", JSON.stringify(database));
-
             
             $(".selected-menu").find(".count").text(findNotCompletedItemCount(todolistName) ? findNotCompletedItemCount(todolistName) : "");
         }
-
     })
 }
 
@@ -356,6 +344,94 @@ function itemBTN() {
         localStorage.setItem("database", JSON.stringify(database));
         $(".selected-menu").find(".count").text(findNotCompletedItemCount(todolistName) ? findNotCompletedItemCount(todolistName) : "");
     });
+}
+
+function addNewTodolist(newTDL) {
+    database[userIndex].todolists.push(newTDL);
+}
+
+function addNewItem(todolistName, item) {
+    for (let i =0; i<database[userIndex].todolists.length; i++) {
+        if(database[userIndex].todolists[i].title == todolistName) {
+            let itemCount = database[userIndex].todolists[i].items.length;
+            let itemId = 1;
+            if(itemCount > 0) {
+                let lastItemId = database[userIndex].todolists[i].items[itemCount -1].itemId;
+                itemId = lastItemId + 1;
+            }
+            item.itemId = itemId;
+            database[userIndex].todolists[i].items.push(item);
+        }
+    }
+}
+
+function deleteItem(todolistName, itId, userIndex) {
+    for (let i =0; i<database[userIndex].todolists.length; i++) {
+        if(database[userIndex].todolists[i].title == todolistName) {
+            let itemCount = database[userIndex].todolists[i].items.length;
+            if(itemCount > 0) {
+                let itemIndex = -1;
+                for(let a = 0; a< itemCount; a++) {
+                    if(database[userIndex].todolists[i].items[a].itemId == itId) {
+                        itemIndex = a;
+                    }
+                }
+                if(itemIndex >= 0) {
+                    database[userIndex].todolists[i].items.splice(itemIndex, 1);
+                }
+            }
+        }
+    }
+}
+
+function deleteTodolist(todolistName) {
+    let index = -1;
+    for (let i =0; i<database[userIndex].todolists.length; i++) {
+        if(database[userIndex].todolists[i].title == todolistName) {
+            index = i;
+        }
+    }
+
+    database[userIndex].todolists.splice(index,1);
+}
+
+function findNotCompletedItemCount(todolistName) {
+    let count = 0;
+    for (let i =0; i<database[userIndex].todolists.length; i++) {
+        if(database[userIndex].todolists[i].title == todolistName) {
+            for (let item of database[userIndex].todolists[i].items) {
+                if(!item.completed) {
+                    count ++;
+                }
+            }
+        }
+    }
+
+    return count;
+}
+
+function findTodolistCount() {
+    return database[userIndex].todolists.length;
+}
+
+function getItem(todolistName, itId) {
+    for (let i =0; i<database[userIndex].todolists.length; i++) {
+        if(database[userIndex].todolists[i].title == todolistName) {
+            for (let a =0; a < database[userIndex].todolists[i].items.length ; a++) {
+                if(database[userIndex].todolists[i].items[a].itemId == itId) {
+                    return database[userIndex].todolists[i].items[a];
+                }
+            }
+        }
+    }
+}
+
+function getTodolist(todolistName) {
+    for (let i =0; i<database[userIndex].todolists.length; i++) {
+        if(database[userIndex].todolists[i].title == todolistName) {
+            return database[userIndex].todolists[i];
+        }
+    }
 }
 
 function localLoader() {
@@ -475,95 +551,4 @@ function localLoader() {
     
     localStorage.setItem("database", JSON.stringify(db));
     return db;
-}
-
-
-function addNewTodolist(newTDL) {
-    database[userIndex].todolists.push(newTDL);
-}
-
-function addNewItem(todolistName, item) {
-    for (let i =0; i<database[userIndex].todolists.length; i++) {
-        if(database[userIndex].todolists[i].title == todolistName) {
-            let itemCount = database[userIndex].todolists[i].items.length;
-            let itemId = 1;
-            if(itemCount > 0) {
-                let lastItemId = database[userIndex].todolists[i].items[itemCount -1].itemId;
-                itemId = lastItemId + 1;
-            }
-            item.itemId = itemId;
-            console.log(item);
-            database[userIndex].todolists[i].items.push(item);
-        }
-    }
-}
-
-function deleteItem(todolistName, itId, userIndex) {
-    for (let i =0; i<database[userIndex].todolists.length; i++) {
-        if(database[userIndex].todolists[i].title == todolistName) {
-            let itemCount = database[userIndex].todolists[i].items.length;
-            if(itemCount > 0) {
-                let itemIndex = -1;
-                for(let a = 0; a< itemCount; a++) {
-                    if(database[userIndex].todolists[i].items[a].itemId == itId) {
-                        itemIndex = a;
-                    }
-                }
-                if(itemIndex >= 0) {
-                    database[userIndex].todolists[i].items.splice(itemIndex, 1);
-                }
-            }
-        }
-    }
-}
-
-function deleteTodolist(todolistName) {
-    let index = -1;
-    for (let i =0; i<database[userIndex].todolists.length; i++) {
-        if(database[userIndex].todolists[i].title == todolistName) {
-            index = i;
-        }
-    }
-
-    database[userIndex].todolists.splice(index,1);
-
-}
-
-function findNotCompletedItemCount(todolistName) {
-    let count = 0;
-    for (let i =0; i<database[userIndex].todolists.length; i++) {
-        if(database[userIndex].todolists[i].title == todolistName) {
-            for (let item of database[userIndex].todolists[i].items) {
-                if(!item.completed) {
-                    count ++;
-                }
-            }
-        }
-    }
-
-    return count;
-}
-
-function findTodolistCount() {
-    return database[userIndex].todolists.length;
-}
-
-function getItem(todolistName, itId) {
-    for (let i =0; i<database[userIndex].todolists.length; i++) {
-        if(database[userIndex].todolists[i].title == todolistName) {
-            for (let a =0; a < database[userIndex].todolists[i].items.length ; a++) {
-                if(database[userIndex].todolists[i].items[a].itemId == itId) {
-                    return database[userIndex].todolists[i].items[a];
-                }
-            }
-        }
-    }
-}
-
-function getTodolist(todolistName) {
-    for (let i =0; i<database[userIndex].todolists.length; i++) {
-        if(database[userIndex].todolists[i].title == todolistName) {
-            return database[userIndex].todolists[i];
-        }
-    }
 }
