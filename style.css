@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu&display=swap');
+
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+    user-select: none;
 }
 body {
     padding: 0px 200px;
@@ -28,7 +32,8 @@ body {
 
 #left-section #top {
     display: flex;
-    gap: 35px;
+    gap: 20px;
+    border-radius: 15px;
     align-items: center;
     /* justify-content: left; */
 }
@@ -50,16 +55,13 @@ body {
     display: flex;
     gap: 20px;
     align-items: center;
-    padding: 10px 0px;
-    /* padding-bottom: 15px; */
-    /* border-bottom: 2px solid rgb(183, 183, 183); */
-    /* justify-content: center; */
+    padding: 10px 0;
+    border-radius: 5px;
+    transition: 200ms ease-out 100ms;
 }
 
 #project-members:hover{
     background-color: rgb(224, 224, 224);
-    border-radius: 5px;
-    
     cursor: pointer;
 }
 
@@ -87,14 +89,16 @@ body {
     flex-direction: column;
     gap: 15px;
     border-top: 2px solid rgb(183, 183, 183);
-    padding-top: 20px;
-    
+    padding-top: 20px;    
 }
+
 #left-section .category {
     display: flex;
     gap: 15px;
     font-size: 22px;
     padding: 10px 20px;
+    border-radius: 5px;
+    transition: 200ms ease-out 100ms;
     justify-content: space-between;
 }
 
@@ -110,8 +114,6 @@ body {
 
 #left-section .category:hover {
     background-color: rgb(224, 224, 224);
-    border-radius: 5px;
-    
     cursor: pointer;
 }
 
@@ -130,34 +132,23 @@ body {
     display: flex;
     align-items: center;
     gap: 25px;
-    padding: 10px;
+    padding: 18px 30px;
     border-top: 2px solid grey;
 }
+
 #left-section > footer:hover {
     background-color: rgb(228, 228, 228);
-    
     cursor: pointer;
 }
 
 #left-section footer div:first-of-type {
-    font-size: 35px;
-    font-weight: bold;
-    color: grey;
+    display: flex;
 }
 
 #left-section footer div:last-of-type {
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
-
-
-
-
-
-
-
-
-
 
 /*PROJECT MEMBERS MAIN SECTION*/
 #members {
@@ -170,13 +161,13 @@ body {
     flex-direction: column;
     gap: 35px;
 }
-#members  header {
+#members header {
     font-size: 45px;
     color: rgb(255, 92, 119);
     display: flex;
     gap: 35px;
     font-weight: 700;
-    padding: 60px 60px 120px;
+    padding: 60px 60px 80px;
 }
 
 
@@ -185,13 +176,14 @@ body {
 }
 #members .member-profile {
     display: flex;
-    gap: 40px;
-    padding: 10px 50px;
+    gap: 20px;
+    padding: 20px 40px;
+    border-radius: 15px;
+    transition: 400ms ease-out 100ms;
 }
 
 #members .member-profile:hover {
-    background-color: rgb(206, 206, 206);
-    border-radius: 15px;
+    background-color: rgb(240, 159, 197);
     cursor: pointer;
 }
 
@@ -267,34 +259,33 @@ body {
     background-color: rgb(235, 235, 235);
     padding: 10px 20px;
     border-radius: 8px;
-    
     left: 25px;
     right: 25px;
+    height: 40px;
     position: absolute;
     bottom: 25px;
 }
 
-#add-bar p {
-    font-size: 35px;
-    font-weight: bold;
+#add-bar div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 #add-bar input {
     background-color: rgb(235, 235, 235);
     border: none;
     font-size: 22px;
     width: 100%;
 }
-#add-bar p:hover {
+
+#add-bar div:hover {
     cursor: pointer;
 }
 
 #add-bar input:focus {
     outline: none;
 }
-
-
-
-
 
 /*OVERLAY MODAL*/
 #modal {
@@ -345,9 +336,9 @@ body {
     border: 2px grey solid;
     border-radius: 4px;
 }
+
 #modal footer button:hover {
     background-color: rgb(212, 212, 212);
-    
     cursor: pointer;
 }
 

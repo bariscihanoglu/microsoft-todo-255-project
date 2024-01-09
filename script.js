@@ -91,7 +91,6 @@ function profileSelection() {
     // and if the selected user has at least one todolist
     // first one automatically is rendered
 
-
     $("#members .member-profile").on("click", function(e) {
         userIndex = $(this).index();
         renderProfile();
@@ -107,7 +106,6 @@ function profileSelection() {
             $(".selected-menu").removeClass("selected-menu");
             $(".category:eq(0)").addClass("selected-menu");
             $("#add-bar input").focus();
-
         }
     })
 
@@ -152,7 +150,6 @@ function projectMembersButton () {
     $("#project-members").on("click", function(e) {
         $("#members").removeClass("hidden").addClass("display");
         $("#todolist").removeClass("display").addClass("hidden");
-        //renderUsers();
 
         $(".selected-menu").removeClass("selected-menu");
         $(this).addClass("selected-menu");
@@ -236,7 +233,6 @@ function modalInputEnterTrigger() {
                 $("#add-bar input").focus();
                 $("#project-members").removeClass("selected-menu");
             }
-
         }
     })
 }
@@ -291,7 +287,7 @@ function addNewItemBTN() {
         }
     })
 
-    $("#add-bar p").on("click", function() {
+    $("#add-bar i").on("click", function() {
         let itemName = $("#add-bar input").val();
         if(itemName.length) {
             let todolistName = $("#todolist header div").text();
@@ -351,7 +347,7 @@ function addNewTodolist(newTDL) {
 }
 
 function addNewItem(todolistName, item) {
-    for (let i =0; i<database[userIndex].todolists.length; i++) {
+    for (let i = 0; i<database[userIndex].todolists.length; i++) {
         if(database[userIndex].todolists[i].title == todolistName) {
             let itemCount = database[userIndex].todolists[i].items.length;
             let itemId = 1;
@@ -457,7 +453,7 @@ function localLoader() {
                 {
                 itemName: "Apple",
                 itemId: 3,
-                completed: false
+                completed: true
                 },
                 {
                 itemName: "Milka",
@@ -467,7 +463,7 @@ function localLoader() {
         ]
         },
         {
-            title : "Mourning Routine",
+            title : "Morning Routine",
             items: [
                 {
                 itemName: "Get up at 6.00 am",
@@ -485,7 +481,7 @@ function localLoader() {
         },
         {name: "Kerem Demirel",
         section: "03",
-        id: 2134643234,
+        id: 22201412,
         image:"./img/kerem.jpeg",
         email:"kerem.demirel@ug.bilkent.edu.tr",
         todolists : [{
@@ -494,7 +490,7 @@ function localLoader() {
                 {
                 itemName: "Law",
                 itemId: 1,
-                completed: false
+                completed: true
                 },
                 {
                 itemName: "Eng",
@@ -507,14 +503,14 @@ function localLoader() {
         },
         {name: "Barış Cihanoğlu",
         section: "08",
-        id: 124523,
+        id: 22202987,
         image:"./img/baris.jpeg",
         email:"baris.cihanoglu@ug.bilkent.edu.tr",
         todolists : [{
             title : "Book",
             items: [
                 {
-                itemName: "Chpter1",
+                itemName: "Chapter1",
                 itemId: 1,
                 completed: false
                 },
@@ -529,7 +525,7 @@ function localLoader() {
             title : "Life",
             items: [
                 {
-                itemName: "live",
+                itemName: "Live",
                 itemId: 1,
                 completed: false
                 },
