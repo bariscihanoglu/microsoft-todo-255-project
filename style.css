@@ -65,12 +65,6 @@ body {
     cursor: pointer;
 }
 
-/*#left-section #project-members div:first-of-type {
-    width: 5px;
-    height: 22px;
-    background-color:rgb(11, 27, 109)
-}*/
-
 #left-section #project-members i {
     color: grey;
 }
@@ -240,6 +234,10 @@ body {
 }
 
 #items .item:hover {
+    cursor: pointer;
+}
+
+#items .item input:hover {
     cursor: pointer;
 }
 
