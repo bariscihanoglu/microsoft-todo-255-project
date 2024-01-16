@@ -1,5 +1,5 @@
 # Microsoft To-Do
-Page Link: https://bariscihanoglu.github.io/frontend-255-project/
+Page Link: https://bariscihanoglu.github.io/microsoft-todo-255-project/
 
 This project is developed using jQuery library of Javascript.
 
